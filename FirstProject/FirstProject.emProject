@@ -1,0 +1,84 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="FirstProject" target="8" version="2">
+  <project Name="FirstProject">
+    <configuration
+      Name="Common"
+      arm_core_type="Cortex-M7"
+      arm_endian="Little"
+      arm_linker_heap_size="1024"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="1024"
+      arm_linker_variant="SEGGER"
+      arm_simulator_memory_simulation_parameter="RX 00400000,00200000,FFFFFFFF;RWX 20400000,00060000,CDCDCDCD"
+      arm_target_device_name="ATSAMV71Q21"
+      arm_target_interface_type="SWD"
+      debug_target_connection="J-Link"
+      link_linker_script_file="Setup/SEGGER_Flash.icf"
+      linker_output_format="hex"
+      linker_section_placements_segments="FLASH1 RX 0x00400000 0x00200000;RAM1 RWX 0x20400000 0x00060000"
+      project_directory=""
+      project_type="Executable" />
+    <folder Name="Setup">
+      <file file_name="Setup/SEGGER_Flash.icf" />
+      <file file_name="Setup/flash.ld" />
+    </folder>
+    <folder Name="Source">
+      <configuration
+        Name="Common"
+        filter="c;cpp;cxx;cc;h;s;asm;inc"
+        project_inhibit_indexing="No" />
+      <file file_name="Source/main.c" />
+      <folder
+        Name="config"
+        exclude=""
+        filter=""
+        path="Source/config"
+        recurse="Yes" />
+      <folder
+        Name="ASF"
+        exclude=""
+        filter=""
+        path="Source/ASF"
+        recurse="Yes" />
+    </folder>
+    <configuration
+      CMSIS_CORE="No"
+      CMSIS_DSP="No"
+      Name="Debug"
+      STLport="No"
+      arm_compiler_variant="gcc"
+      arm_library_architecture="v7EM"
+      arm_linker_variant="GNU"
+      build_quietly="No"
+      c_preprocessor_definitions="__SAMV71Q21B__;ARM_MATH_CM7=true;BOARD=SAMV71_XPLAINED_ULTRA;DEBUG"
+      c_user_include_directories="$(ProjectDir)/Source/ASF/sam/utils;$(ProjectDir)/Source/ASF/common/utils;$(ProjectDir)/Source/ASF/sam/utils/preprocessor;$(ProjectDir)\\Source\\ASF\\sam\\utils\\header_files;$(ProjectDir)\\Source\\ASF\\sam\\utils\\cmsis\\samv71\\include;$(ProjectDir)\\Source\\ASF\\thirdparty\\CMSIS\\Include;$(ProjectDir)\\Source\\ASF\\sam\\utils\\cmsis\\samv71\\source\\templates;$(ProjectDir)\\Source\\ASF\\common\\services\\gpio;$(ProjectDir)\\Source\\ASF\\sam\\drivers\\pio;$(ProjectDir)/Source/ASF/sam/drivers/tc;$(ProjectDir)/Source/ASF/sam/drivers/pmc;$(ProjectDir)/Source/ASF/thirdparty/CMSIS/Lib/GCC;$(ProjectDir)/Source/ASF/sam/utils/fpu;$(ProjectDir)/Source/ASF/common/services/ioport;$(ProjectDir)/Source/ASF/common/services/clock;$(ProjectDir)/Source/ASF/common/utils/stdio/stdio_serial;$(ProjectDir)/Source/ASF/common/services/serial/sam_uart;$(ProjectDir)/Source/ASF/common/services/serial;$(ProjectDir)/Source/ASF/sam/drivers/uart;$(ProjectDir)/Source/ASF/sam/drivers/usart;$(ProjectDir)/Source/ASF/sam/boards/samv71_xplained_ultra;$(ProjectDir)/Source/ASF/sam/boards;$(ProjectDir)/Source/ASF/common/boards;$(ProjectDir)/Source/ASF/sam/drivers/mpu;$(ProjectDir)/Source/ASF/sam/drivers/matrix;$(ProjectDir)/Source/config;$(StudioDir)/include"
+      cpp_enable_rtti="Yes"
+      debug_RTTCB="_SEGGER_RTT"
+      debug_type_file="$(StudioDir)/bin/STLport.xml"
+      gcc_c_language_standard="gnu99"
+      gcc_entry_point="Reset_Handler"
+      link_dependent_projects="No"
+      link_include_standard_libraries="Yes"
+      link_linker_script_file="Setup/flash.ld"
+      link_use_linker_script_file="Yes"
+      linker_additional_options=""
+      linker_output_format="bin"
+      linker_printf_fp_enabled="No"
+      linker_printf_wchar_enabled="No"
+      linker_printf_width_precision_supported="No"
+      linker_scanf_character_group_matching_enabled="No"
+      linker_scanf_fp_enabled="No" />
+    <folder Name="SEGGER" exclude="" filter="" path="SEGGER" recurse="Yes" />
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1" />
+</solution>
